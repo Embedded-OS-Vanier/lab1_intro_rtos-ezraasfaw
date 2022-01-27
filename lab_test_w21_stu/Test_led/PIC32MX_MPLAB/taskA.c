@@ -18,7 +18,7 @@
 #include "semphr.h"
 #include "include/public.h"
 #include "include/console32.h"
-
+QUEUE UNDECLARED!
 
 void TaskA(){
     
