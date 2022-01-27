@@ -21,6 +21,8 @@
       <itemPath>../include/ConfigPerformance.h</itemPath>
       <itemPath>../include/Tick_core.h</itemPath>
       <itemPath>../include/console32.h</itemPath>
+      <itemPath>../taskA.h</itemPath>
+      <itemPath>../taskB.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -48,6 +50,9 @@
       <itemPath>../vtask2.c</itemPath>
       <itemPath>../Tick_core.c</itemPath>
       <itemPath>../console32.c</itemPath>
+      <itemPath>../taskA.c</itemPath>
+      <itemPath>../taskB.c</itemPath>
+      <itemPath>../taskC.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -70,7 +75,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.41</languageToolchainVersion>
+        <languageToolchainVersion>2.50</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -100,6 +105,10 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../vtask1.c" ex="true" overriding="false">
+      </item>
+      <item path="../vtask2.c" ex="true" overriding="false">
+      </item>
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
@@ -265,7 +274,7 @@
         <property key="codecoverage.report" value=""/>
         <property key="oscillator.auxfrequency" value="120"/>
         <property key="oscillator.auxfrequencyunit" value="Mega"/>
-        <property key="oscillator.frequency" value="40"/>
+        <property key="oscillator.frequency" value="80"/>
         <property key="oscillator.frequencyunit" value="Mega"/>
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>
