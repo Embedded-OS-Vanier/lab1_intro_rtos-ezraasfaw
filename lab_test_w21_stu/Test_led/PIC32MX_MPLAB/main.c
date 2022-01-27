@@ -5,7 +5,7 @@
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Author               Date      		Comments on this revision
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Ezra-Fikru Asfaw     1/20/2022       Worked on Vtask1 & Vtask2.
+ * Ezra-Fikru Asfaw     1/20/2022       Worked on Vtask1 & Vtask2.  ISN'T TASKA AND TASKB!
  *                            
  *****************************************************************************/
 
@@ -43,7 +43,7 @@ int main( void )
     //vStartTask1();
     //vStartTask2();
     
-    taskA();
+    taskA();  BETTER NAME start_taskA
     taskB();
     
     vTaskStartScheduler();
