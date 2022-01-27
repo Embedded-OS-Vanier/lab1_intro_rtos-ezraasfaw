@@ -20,12 +20,16 @@
 #include "include/console32.h"
 #include "include/public.h"
 
+QueueHandle_t xQueue;
 
 /* Prototypes for the standard FreeRTOS callback/hook functions implemented within this file. */
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 
 int main( void )
 {
+    //Queue creation
+    xQueue = xQueueCreate( 5, sizeof( int16_t ) );
+    
     /* Prepares the hardware */
 	prvSetupHardware();
     //initIO();
@@ -36,8 +40,11 @@ int main( void )
     fprintf2(C_UART1, "Hi Uart1\n");
     
     /* create tasks here */
-    vStartTask1();
-    vStartTask2();
+    //vStartTask1();
+    //vStartTask2();
+    
+    taskA();
+    taskB();
     
     vTaskStartScheduler();
 	return 0;
