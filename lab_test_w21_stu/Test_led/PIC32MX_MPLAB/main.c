@@ -5,8 +5,9 @@
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Author               Date      		Comments on this revision
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Ezra-Fikru Asfaw     1/20/2022       Worked on Vtask1 & Vtask2.  ISN'T TASKA AND TASKB!
- *                            
+ * Ezra-Fikru Asfaw     1/20/2022       Worked and completed  Vtask1 & Vtask2. 
+ * Ezra-Fikru Asfaw     1/27/2022       Worked on VtaskA & VtaskB.  
+ * Ezra-Fikru Asfaw     2/3/2022        Completed VtaskA & VtaskB. LCD doesn't work.                         
  *****************************************************************************/
 
 /* Kernel includes. */
@@ -19,6 +20,8 @@
 #include "include/ConfigPerformance.h"
 #include "include/console32.h"
 #include "include/public.h"
+#include "taskA.h"
+#include "taskB.h"
 
 QueueHandle_t xQueue;
 
@@ -28,7 +31,7 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 int main( void )
 {
     //Queue creation
-    xQueue = xQueueCreate( 5, sizeof( int16_t ) );
+   // xQueue = xQueueCreate( 5, sizeof( int16_t ) );
     
     /* Prepares the hardware */
 	prvSetupHardware();
@@ -43,8 +46,10 @@ int main( void )
     //vStartTask1();
     //vStartTask2();
     
-    taskA();  BETTER NAME start_taskA
-    taskB();
+    vInitQueue1();
+    
+    vStartTaskA();
+    vStartTaskB();
     
     vTaskStartScheduler();
 	return 0;

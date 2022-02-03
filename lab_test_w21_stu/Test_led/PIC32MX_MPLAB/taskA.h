@@ -1,6 +1,6 @@
 /* 
  * File:   taskA.h
- * Author: EEEFL_DESKTOP
+ * Author: Ezra-Fikru Asfaw
  *
  * Created on January 27, 2022, 11:41 AM
  */
@@ -14,7 +14,8 @@ extern "C" {
 
 
 #include <stdint.h>
-void TaskA();
+void vTaskA();
+void vStartTaskA(void);
 
 #ifdef	__cplusplus
 }

@@ -17,21 +17,55 @@
 #include "semphr.h"
 #include "include/public.h"
 #include "include/console32.h"
+#include "taskA.h"
 
-QUEUE UNDECLARED
+//QUEUE UNDECLARED
+static QueueHandle_t xQueue1 = NULL;
 
-void vTaskB(){// TaskB
+
+
+
+
+static void vTaskB(){// TaskB
+
     
-long y;
-
+int cnt = 0;    
+int y;
+char buff[6];
+ 
 while(1){
     
 /* Receive data from the queue. The first parameter is the queue from which data is to be received. 
  * The second parameter is the buffer into which the received data will be placed. 
  * The last parameter is the block time */
-    _LATA0 = 0;// Turns OFF a LED
     
-    xQueueReceive( xQueue,&y,portMAX_DELAY); 
-   
-    vTaskDelay( y / portTICK_RATE_MS);
+    if (cnt==5){
+    cnt = 0;
+    sprintf(buff, "   \n");
+    fprintf2(C_UART1, buff);
+    
+   }
+    else{
+    // _LATA0 = 0;// Turns OFF a LED
+    xQueueReceive( xQueue1,&y,portMAX_DELAY); 
+   // _LATA0 = 1;// Turns ON a LED
+    sprintf(buff, "%c ", y);
+    fprintf2(C_UART1, buff);
+    cnt++;
+        }
+}
+    //vTaskDelay( 200 / portTICK_RATE_MS);
+}
+
+void vStartTaskB(void){
+    xTaskCreate(vTaskB,"TI",240,NULL,2,NULL);
+    }
+
+
+void vInitQueue1(void){
+    xQueue1 = xQueueCreate(5, sizeof(char));
+}
+
+void vSendQueue1(int data){
+    xQueueSend(xQueue1,&data,0);
 }

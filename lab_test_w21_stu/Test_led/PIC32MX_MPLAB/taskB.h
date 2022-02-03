@@ -1,6 +1,6 @@
 /* 
  * File:   taskB.h
- * Author: EEEFL_DESKTOP
+ * Author: Ezra-Fikru Asfaw
  *
  * Created on January 27, 2022, 11:46 AM
  */
@@ -14,7 +14,9 @@ extern "C" {
 
 #include <stdint.h>
 void TaskB();
-
+void vStartTaskB();
+void vInitQueue1(void);
+void vSendQueue1(int data);
 
 #ifdef	__cplusplus
 }

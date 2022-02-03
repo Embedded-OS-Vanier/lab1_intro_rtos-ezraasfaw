@@ -18,24 +18,29 @@
 #include "semphr.h"
 #include "include/public.h"
 #include "include/console32.h"
-QUEUE UNDECLARED!
+#include "taskB.h"
+//QUEUE UNDECLARED!
+static QueueHandle_t xQueueA = NULL;
 
-void TaskA(){
+static void vTaskA(void *pvParameters){
     
-// TaskAlong 
-    char cch;
+    char buff;
+    int cch;
     int num = 5;
+    int i;
+    
+    
     
     while(1){
-        
-   for (int i=0; i<num; i++){
-           
+
+   for(i=0; i<num; i++){
         cch = 'A' + rand()%26;
-        
-        xQueueSendToBack(xQueue,&cch,0);
-        fprintf2(C_UART1, "%c \n", cch);
-        vTaskDelay( 4000 / portTICK_RATE_MS);
-    
+        vSendQueue1(cch);
+        vTaskDelay( 20 / portTICK_RATE_MS);
         }
-   }
-    
+    }
+}
+
+void vStartTaskA(void){
+    xTaskCreate(vTaskA,"TI",240,NULL,1,NULL);
+}
