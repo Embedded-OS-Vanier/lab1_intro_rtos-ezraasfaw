@@ -17,7 +17,10 @@
 #include "semphr.h"
 #include "include/public.h"
 #include "include/console32.h"
-#include "taskA.h"
+
+
+#define UART1_DELAY_TASKB 20
+#define UART2_DELAY_TASKB 200
 
 //QUEUE UNDECLARED
 static QueueHandle_t xQueue1 = NULL;
@@ -30,31 +33,22 @@ static void vTaskB(){// TaskB
 
     
 int cnt = 0;    
-int y;
+int rx;
 char buff[6];
- 
+
 while(1){
     
 /* Receive data from the queue. The first parameter is the queue from which data is to be received. 
  * The second parameter is the buffer into which the received data will be placed. 
  * The last parameter is the block time */
-    YOU DON'T NEED A SKIP COUNTER. JUST ADD A DELAY AFTER THE QUEUE UNBLOCKS
-    if (cnt==5){
-    cnt = 0;
-    sprintf(buff, "   \n");
-    fprintf2(C_UART1, buff);
-    
-   }
-    else{
-    // _LATA0 = 0;// Turns OFF a LED
-    xQueueReceive( xQueue1,&y,portMAX_DELAY); 
-   // _LATA0 = 1;// Turns ON a LED
-    sprintf(buff, "%c ", y);
-    fprintf2(C_UART1, buff);
-    cnt++;
-        }
-}
-    //vTaskDelay( 200 / portTICK_RATE_MS);
+
+    xQueueReceive( xQueue1,&rx,portMAX_DELAY);
+    vTaskDelay( getSpeed() / portTICK_RATE_MS);
+    sprintf(buff, "%c ", rx);
+    fprintf2(C_UART2, buff);
+
+    }
+  
 }
 
 void vStartTaskB(void){

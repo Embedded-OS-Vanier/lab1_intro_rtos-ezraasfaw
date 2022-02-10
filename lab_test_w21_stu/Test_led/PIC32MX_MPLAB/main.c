@@ -35,12 +35,12 @@ int main( void )
     
     /* Prepares the hardware */
 	prvSetupHardware();
-    //initIO();
+    initIO();
     //LCDInit();
-    initUart1();
-    //initUart2_wInt();
+    //initUart1();
+    initUart2_wInt();
     
-    fprintf2(C_UART1, "Hi Uart1\n");
+    fprintf2(C_UART2, "Hi Uart1\n\r");
     
     /* create tasks here */
     //vStartTask1();
@@ -50,7 +50,7 @@ int main( void )
     
     vStartTaskA();
     vStartTaskB();
-    
+    vStartTaskC();
     vTaskStartScheduler();
 	return 0;
 }

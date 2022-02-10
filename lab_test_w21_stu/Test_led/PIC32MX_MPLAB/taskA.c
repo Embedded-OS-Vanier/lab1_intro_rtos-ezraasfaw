@@ -18,8 +18,11 @@
 #include "semphr.h"
 #include "include/public.h"
 #include "include/console32.h"
-#include "taskB.h"
-//QUEUE UNDECLARED!
+
+
+#define UART1_DELAY_TASKA 120
+#define UART2_DELAY_TASKA 4000
+
 static QueueHandle_t xQueueA = NULL;
 
 static void vTaskA(void *pvParameters){
@@ -29,15 +32,15 @@ static void vTaskA(void *pvParameters){
     int num = 5;
     int i;
     
-    
-    
     while(1){
 
-   for(i=0; i<num; i++){
+    for(i=0; i<num; i++){
         cch = 'A' + rand()%26;
         vSendQueue1(cch);
-        vTaskDelay( 20 / portTICK_RATE_MS);  DELAY AFTER THE FOR LOOP
+        
         }
+        vTaskDelay( UART2_DELAY_TASKA / portTICK_RATE_MS); 
+        fprintf2(C_UART2, "\n\r");
     }
 }
 
