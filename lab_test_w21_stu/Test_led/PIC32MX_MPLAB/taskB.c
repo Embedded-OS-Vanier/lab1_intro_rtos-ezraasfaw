@@ -38,7 +38,7 @@ while(1){
 /* Receive data from the queue. The first parameter is the queue from which data is to be received. 
  * The second parameter is the buffer into which the received data will be placed. 
  * The last parameter is the block time */
-    
+    YOU DON'T NEED A SKIP COUNTER. JUST ADD A DELAY AFTER THE QUEUE UNBLOCKS
     if (cnt==5){
     cnt = 0;
     sprintf(buff, "   \n");
