@@ -36,7 +36,7 @@ static void vTaskA(void *pvParameters){
    for(i=0; i<num; i++){
         cch = 'A' + rand()%26;
         vSendQueue1(cch);
-        vTaskDelay( 20 / portTICK_RATE_MS);
+        vTaskDelay( 20 / portTICK_RATE_MS);  DELAY AFTER THE FOR LOOP
         }
     }
 }
