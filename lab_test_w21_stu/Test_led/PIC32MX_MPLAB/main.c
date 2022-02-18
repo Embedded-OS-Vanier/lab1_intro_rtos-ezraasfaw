@@ -58,8 +58,17 @@ int main( void )
 
 
 void vApplicationIdleHook( void ){
+
+    int skipCnt = 0;
+
     while(1){
-        //your code here
+
+        ++skipCnt;
+        if(skipCnt == IDLEHOOK){
+            fprintf2(C_UART1, "IdleHook\n");
+            skipCnt = 0;
+        }
+
     }
 }
 
